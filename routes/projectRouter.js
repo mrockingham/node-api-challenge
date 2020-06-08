@@ -9,7 +9,7 @@ server.use(express.json())
 
 
 
-
+//Get Request
 server.get('/', (req, res) => {
     Project.get()
     .then(Project => {
@@ -25,7 +25,23 @@ server.get('/', (req, res) => {
   });
 
 
-server.post('/', (req, res) => {
+  server.get('/:id/actions', validateProjectId, (req, res) => {
+      const {id} = req.params
+    Project.getProjectActions(id)
+    .then(Project => {
+      res.status(200).json(Project);
+    })
+    .catch(error => {
+      // log error to database
+      console.log(error);
+      res.status(500).json({
+        message: 'Error retrieving posts',
+      });
+    });
+  });
+
+///Post Request
+server.post('/', validateProjectId, (req, res) => {
     Project.insert(req.body)
     .then ( Project =>{
         res.status(201).json(Project)
@@ -39,7 +55,9 @@ server.post('/', (req, res) => {
     })
 })
 
-server.delete('/:id', (req, res) =>{
+
+///delete request
+server.delete('/:id', validateProjectId, (req, res) =>{
     Project.remove(req.params.id)
     .then(count =>{
         if (count > 0){
@@ -57,7 +75,9 @@ server.delete('/:id', (req, res) =>{
     })
 })
 
-server.put('/:id', (req, res)=>{
+
+/// update request
+server.put('/:id', validateProjectId, (req, res)=>{
     const changes = req.body
     Project.update(req.params.id, changes)
     .then(Project =>{
@@ -70,6 +90,24 @@ server.put('/:id', (req, res)=>{
         })
     })
 })  
+
+
+
+function validateProjectId(req,res, next){
+    const {id} = req.params
+
+    Project.get(id)
+    .then(Project =>{
+        if(Project) {
+            req.Project =Project
+            next()
+        } else{
+            res.status(404).json({message: 'Project not found'})
+        }
+    })
+}
+
+
 
 
 

@@ -40,13 +40,25 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+Express is a lightweight  unopinionated framework that sits on top of node.js
+Express can use Middleware
+
+
+
+
 - [ ] Describe Middleware?
+
+Middleware is an array of functions that get executed in the order they are introduced into the server code
 
 - [ ] Describe a Resource?
 
-- [ ] What can the API return to help clients know if a request was successful?
+Resources is the data sitting on the server. The front end is able to manaage the end points
 
+- [ ] What can the API return to help clients know if a request was successful?
+The Api can reture status codes like 500 and messages
 - [ ] How can we partition our application into sub-applications?
+
+you can put componets in their own folder like if you have multiple routes the can go in seprater folders or condenced into folders. You can also have seprate middleware folders
 
 ## Minimum Viable Product
 

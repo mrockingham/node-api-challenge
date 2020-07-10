@@ -40,13 +40,19 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+Routes - lets you sepreate your routes for better looking code
+
 - [ ] Describe Middleware?
+middleware adds functionaly to express, like letting you add console log information when routes are accessed, and like validation. there are tons of middleare out there
 
 - [ ] Describe a Resource?
+a resource can be like a data base it has all the info and 'resources' for express to do its job
 
 - [ ] What can the API return to help clients know if a request was successful?
+it can return messeages and status codes
 
 - [ ] How can we partition our application into sub-applications?
+using routes and folders.
 
 ## Minimum Viable Product
 

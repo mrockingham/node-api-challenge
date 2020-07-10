@@ -11,7 +11,7 @@ const ActionList = (proops) => {
     useEffect(()=>{
         axios.get(`http://localhost:5000/api/projects/${params.id}/action`)
         .then(res =>{
-            console.log('what is this', res.data)
+            
             setActions(res.data.data)
         })
     },[])

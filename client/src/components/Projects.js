@@ -4,9 +4,10 @@ const Projects = (props) => {
     const {project} =props
     return (
         <div>
+            <Link to ={`/action/${project.id}`}>
             List of Projects
                 {project.name}
-            
+            </Link>
         </div>
     )
 }
